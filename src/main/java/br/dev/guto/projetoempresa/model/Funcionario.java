@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "funcionario")
@@ -25,11 +29,11 @@ public class Funcionario {
 	@Column(name = "salario", nullable = false)
 	private Double salario;
 	
-	@Column(name = "numero_id")
-	private Integer numeroId;
+	@ManyToOne
+	@JoinColumn(name = "numero_id")
+	@JsonIgnoreProperties("listaFuncionarios")
+	private Departamento numeroDepartamento;
 	
-	@Column(name = "numero_chefe")
-	private Integer numeroChefe;
 
 	public Integer getNumFuncional() {
 		return numFuncional;
@@ -63,20 +67,12 @@ public class Funcionario {
 		this.salario = salario;
 	}
 
-	public Integer getNumeroId() {
-		return numeroId;
+	public Departamento getNumeroDepartamento() {
+		return numeroDepartamento;
 	}
 
-	public void setNumeroId(Integer numeroId) {
-		this.numeroId = numeroId;
-	}
-
-	public Integer getNumeroChefe() {
-		return numeroChefe;
-	}
-
-	public void setNumeroChefe(Integer numeroChefe) {
-		this.numeroChefe = numeroChefe;
+	public void setNumeroDepartamento(Departamento numeroDepartamento) {
+		this.numeroDepartamento = numeroDepartamento;
 	}
 		
 }

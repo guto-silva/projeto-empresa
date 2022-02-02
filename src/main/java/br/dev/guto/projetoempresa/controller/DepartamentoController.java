@@ -13,7 +13,7 @@ import br.dev.guto.projetoempresa.model.Departamento;
 public class DepartamentoController {
 	
 	@Autowired
-	DepartamentoDao dao;
+	private DepartamentoDao dao;
 	
 	@GetMapping("/departamento")
 	public ArrayList<Departamento> recuperarDepartamentos(){

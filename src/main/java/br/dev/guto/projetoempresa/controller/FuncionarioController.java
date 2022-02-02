@@ -13,11 +13,15 @@ import br.dev.guto.projetoempresa.model.Funcionario;
 public class FuncionarioController {
 	
 	@Autowired
-	FuncionarioDao dao;
+	private FuncionarioDao dao;
 	
-	@GetMapping("/funcionario")
-	public ArrayList<Funcionario> recuperarFuniconarios(){
+	@GetMapping("/funcionarios")
+	public ArrayList<Funcionario> recuperarTodosFuncionarios(){
 		return (ArrayList<Funcionario>)dao.findAll();
 	}
 	
+	@GetMapping("/funcionario")
+	public Funcionario recuperarPorId() {
+		return dao.findById(1).get();
+	}
 }
